@@ -1,0 +1,26 @@
+= form_for :students do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :sex
+    = f.select :sex, %W(M F), class: 'form-control'
+  .form-group
+    = f.label :school, 'Current School'
+    = f.text_field :school, class: 'form-control'
+  .form-group
+    = f.label :level, 'Current Level'
+    = f.text_field :level, class: 'form-control'
+  .form-group
+    = f.label :date_of_birth
+    = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control'
+  .form-group
+    = f.label :sat_score, "SAT Score"
+    = f.text_field :sat_score, class: 'form-control'
+  .form-group
+    = f.label :country
+    = f.select :country, %w(Singapore Malaysia Indonesia Philippines Hong Kong Vietnam), class: 'form-control'
+  .form-group
+    = label_tag :college
+    = select_tag :college, College.all
+  = f.submit "Add", class: "btn btn-primary"
