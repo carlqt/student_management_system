@@ -25,7 +25,7 @@ college_hash = [
     name: "Harvard",
     country: "United States",
     sat_min_score: "5.0",
-    sat_max_score: "1.0"
+    sat_max_score: "1.0",
     tuition: "400000"
   }
 ]

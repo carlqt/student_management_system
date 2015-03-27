@@ -22,5 +22,5 @@
     = f.select :country, %w(Singapore Malaysia Indonesia Philippines Hong Kong Vietnam), class: 'form-control'
   .form-group
     = label_tag :college
-    = select_tag :college, College.all
+    = select_tag :college, options_for_select(@colleges), include_blank: true
   = f.submit "Add", class: "btn btn-primary"
