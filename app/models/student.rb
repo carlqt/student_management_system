@@ -16,6 +16,7 @@
 #
 
 class Student < ActiveRecord::Base
-  has_many :colleges
+  has_many :colleges, through: :student_colleges
+  has_many :student_colleges
   belongs_to :mentor
 end
