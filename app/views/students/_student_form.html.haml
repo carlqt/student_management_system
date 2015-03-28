@@ -1,13 +1,13 @@
-= form_for :students do |f|
+= form_for @student do |f|
   .row
     .col-md-9
       .form-group
         = f.label :name
-        = f.text_field :name, class: 'form-control'
+        = f.text_field :name, class: 'form-control', required: true
     .col-md-3
       .form-group
         = f.label :date_of_birth
-        = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control'
+        = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control', required: true
   .row
     .col-sm-3
       .form-group
@@ -20,7 +20,7 @@
     .col-sm-6
   .form-group
     = f.label :school, 'Current School'
-    = f.text_field :school, class: 'form-control'
+    = f.text_field :school, class: 'form-control', required: true
   .form-group
     = f.label :level, 'Current Level'
     = f.text_field :level, class: 'form-control'
@@ -28,9 +28,9 @@
   .form-group
     = f.label :sat_score, "SAT Score"
     = f.text_field :sat_score, class: 'form-control'
-  .form-group
 
   .form-group
     = label_tag :college
     = select_tag :college, options_from_collection_for_select(@colleges, :id, :name), include_blank: true, class: "form-control"
+
   = f.submit "Add", class: "btn btn-primary"
