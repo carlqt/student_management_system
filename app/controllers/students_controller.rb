@@ -6,6 +6,6 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @colleges = College.pluck(:name)
+    @colleges = College.all
   end
 end
