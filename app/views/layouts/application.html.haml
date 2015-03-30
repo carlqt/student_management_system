@@ -5,6 +5,19 @@
     = stylesheet_link_tag    'application','https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    .navbar.navbar-inverse.navbar-fixed-top.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#"} Brand
+        .collapse.navbar-collapse
+          .nav.navbar-nav
+            %li= link_to "Students", students_path
+            %li= link_to "Mentors", mentors_path
     .container
       = yield
 
