@@ -1,36 +1,46 @@
+%h1 Add Student
+%hr
 = form_for @student do |f|
   .row
-    .col-md-9
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control', required: true
     .col-md-3
+      .text-center
+        %img.avatar.img-circle{:alt => "avatar", :src => "//placehold.it/100"}
+          %h6 Upload a different photo...
+          %input.form-control{:type => "file"}
+    .col-md-9
+      %h3 Personal Info
+      .row
+        .col-md-9
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: 'form-control', required: true
+        .col-md-3
+          .form-group
+            = f.label :date_of_birth
+            = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control', required: true
+      .row
+        .col-sm-3
+          .form-group
+            = f.label :sex
+            = f.select :sex, %W(M F), {}, class: 'form-control'
+        .col-sm-3
+          .form-group
+            = f.label :country
+            = f.select :country, %w(Singapore Malaysia Indonesia Philippines Hong Kong Vietnam), {}, class: "form-control"
+        .col-sm-6
       .form-group
-        = f.label :date_of_birth
-        = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control', required: true
-  .row
-    .col-sm-3
+        = f.label :school, 'Current School'
+        = f.text_field :school, class: 'form-control', required: true
       .form-group
-        = f.label :sex
-        = f.select :sex, %W(M F), {}, class: 'form-control'
-    .col-sm-3
+        = f.label :level, 'Current Level'
+        = f.text_field :level, class: 'form-control'
+
       .form-group
-        = f.label :country
-        = f.select :country, %w(Singapore Malaysia Indonesia Philippines Hong Kong Vietnam), {}, class: "form-control"
-    .col-sm-6
-  .form-group
-    = f.label :school, 'Current School'
-    = f.text_field :school, class: 'form-control', required: true
-  .form-group
-    = f.label :level, 'Current Level'
-    = f.text_field :level, class: 'form-control'
+        = f.label :sat_score, "SAT Score"
+        = f.text_field :sat_score, class: 'form-control'
 
-  .form-group
-    = f.label :sat_score, "SAT Score"
-    = f.text_field :sat_score, class: 'form-control'
+      .form-group
+        = f.label :college_id
+        = f.select :college_id, options_from_collection_for_select(@colleges, :id, :name, @student.college_id), { include_blank: true }, class: "form-control"
 
-  .form-group
-    = f.label :college_id
-    = f.select :college_id, options_from_collection_for_select(@colleges, :id, :name, @student.college_id), { include_blank: true }, class: "form-control"
-
-  = f.submit "Add", class: "btn btn-primary"
+      = f.submit "Add", class: "btn btn-primary"
