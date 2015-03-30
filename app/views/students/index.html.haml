@@ -1,2 +1,20 @@
-%h1 Students#index
-%p Find me in app/views/students/index.html.haml
+.row
+  .col-md-12
+    %h4
+      Students List
+      %span
+        = link_to new_student_path do
+          %i.glyphicon.glyphicon-plus
+    .table-responsive
+      %table#mytable.table.table-bordred.table-striped
+        %thead
+          %th
+            %input#checkall{:type => "checkbox"}/
+          %th Name
+          %th School
+          %th Country
+          %th SAT Score
+          %th Edit
+          %th Delete
+        %tbody
+          = render @students

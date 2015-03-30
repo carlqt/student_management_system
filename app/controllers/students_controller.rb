@@ -1,13 +1,15 @@
 class StudentsController < ApplicationController
+  before_action :instantiate_variables, only: [:edit, :new]
+
   def index
+    @students = Student.all
   end
 
   def edit
-    @student = Student.find id: params[:id]
+    @student = Student.find params[:id]
   end
 
   def new
-    @colleges = College.all
     @student = Student.new
   end
 
@@ -22,7 +24,17 @@ class StudentsController < ApplicationController
 
   end
 
+  def update
+  end
+
+  def destroy
+  end
+
   private
+
+  def instantiate_variables
+    @colleges = College.all
+  end
 
   def student_params
     params.require(:student).permit(:name, :date_of_birth, :sex, :school, :level, :country, :college_id, :sat_score)
