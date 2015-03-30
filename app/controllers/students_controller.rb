@@ -45,6 +45,6 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:name, :date_of_birth, :sex, :school, :level, :country, :college_id, :sat_score)
+    params.require(:student).permit(:name, :image, :date_of_birth, :sex, :school, :level, :country, :college_id, :sat_score)
   end
 end

@@ -16,6 +16,8 @@
 #
 
 class Student < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
+  
   belongs_to :college
   belongs_to :mentor
 

@@ -9,6 +9,7 @@ class MentorsController < ApplicationController
 
   def update
     @mentor = Mentor.find params[:id]
+
     if @mentor.update_attributes(mentor_params)
       redirect_to :back
     else
@@ -24,6 +25,7 @@ class MentorsController < ApplicationController
   def create
     @mentor = Mentor.new mentor_params
 
+
     if @mentor.save
       redirect_to :back
     else
@@ -37,6 +39,6 @@ class MentorsController < ApplicationController
 
   private
   def mentor_params
-    params.require(:mentor).permit(:name, :date_of_birth, :sex, :bio)
+    params.require(:mentor).permit(:name, :date_of_birth, :sex, :bio, :image)
   end
 end

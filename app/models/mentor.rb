@@ -13,8 +13,9 @@
 #
 
 class Mentor < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   has_many :students
-  
+
   before_create :calculate_age
 
 

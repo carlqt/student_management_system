@@ -3,9 +3,12 @@
   .row
     .col-md-3
       .text-center
-        %img.avatar.img-circle{:alt => "avatar", :src => "//placehold.it/100"}
-          %h6 Upload a different photo...
-          %input.form-control{:type => "file"}
+        - if @student.image.blank?
+          = image_tag "http://placehold.it/100x100", class: "avatar img-circle", alt: "avatar"
+        - else
+          = image_tag @student.image.thumb, class: "avatar img-circle", alt: "avatar"
+        %h6 Upload a different photo...
+        = f.file_field :image, class: 'form-control'
     .col-md-9
       %h3 Personal Info
       .row
