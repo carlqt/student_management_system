@@ -25,7 +25,7 @@ class Student < ActiveRecord::Base
   private
   def calculate_age
     now = Time.now.utc.to_date
-    dob = self.date_of_birth.to_date
+    dob = date_of_birth.to_date
     self.age = now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 end
