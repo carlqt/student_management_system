@@ -16,8 +16,6 @@
 #
 
 class Student < ActiveRecord::Base
-  has_many :colleges, through: :student_colleges
-  has_many :student_colleges
-  accepts_nested_attributes_for :student_colleges
+  belongs_to :college
   belongs_to :mentor
 end
