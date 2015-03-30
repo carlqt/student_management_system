@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :colleges, except: :show
+
   resources :mentors, except: :show
 
   resources :students

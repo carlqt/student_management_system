@@ -1,0 +1,36 @@
+= form_for @college do |f|
+  .row
+    .col-md-3
+      .text-center
+        - if @college.image.blank?
+          = image_tag "http://placehold.it/100x100", class: "avatar img-circle", alt: "avatar"
+        - else
+          = image_tag @college.image.thumb, class: "avatar img-circle", alt: "avatar"
+        %h6 Upload a different photo...
+        = f.file_field :image, class: 'form-control'
+    .col-md-9
+      %h3 Personal Info
+      .row
+        .col-md-9
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: 'form-control', required: true
+        .col-md-3
+          .form-group
+            = f.label :country
+            = f.text_field :country, class: 'form-control', required: true
+      .row
+        .col-sm-3
+          .form-group
+            = f.label :sat_min_score
+            = f.number_field :sat_min_score, class: 'form-control', required: true
+        .col-sm-3
+          .form-group
+            = f.label :sat_max_score
+            = f.number_field :sat_max_score, class: 'form-control', required: true
+        .col-sm-3
+          .form-group
+            = f.label :tuition
+            = f.text_field :tuition, class: 'form-control', require: true
+
+      = f.submit "Save", class: "btn btn-success"

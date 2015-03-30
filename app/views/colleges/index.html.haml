@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    %h4
+      College List
+      %span
+        = link_to new_college_path do
+          %i.glyphicon.glyphicon-plus
+    .table-responsive
+      %table#mytable.table.table-bordred.table-striped
+        %thead
+          %th
+            %input#checkall{:type => "checkbox"}/
+          %th Name
+          %th Country
+          %th SAT min score
+          %th SAT max score
+          %th Tuition
+          %th Edit
+          %th Delete
+        %tbody
+          = render @colleges

@@ -1,0 +1,16 @@
+%tr
+  %td
+    %input.checkthis{:type => "checkbox"}/
+  %td= college.name
+  %td= college.country
+  %td= college.sat_min_score
+  %td= college.sat_max_score
+  %td= number_to_currency college.tuition, unit: "P"
+  %td
+    %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+      = link_to edit_college_path(college.id) do
+        %span.glyphicon.glyphicon-pencil
+  %td
+    %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete"}
+      = link_to college_path(college.id), "data-confirm" => "Are you sure?", method: :delete do
+        %span.glyphicon.glyphicon-trash

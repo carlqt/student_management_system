@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330084634) do
+ActiveRecord::Schema.define(version: 20150330133325) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150330084634) do
     t.decimal  "tuition"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "image"
   end
 
   create_table "mentors", force: :cascade do |t|
