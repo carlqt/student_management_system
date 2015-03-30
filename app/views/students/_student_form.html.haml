@@ -17,7 +17,7 @@
         .col-md-3
           .form-group
             = f.label :date_of_birth
-            = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control', required: true
+            = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control datepicker date', "data-date-format" => "dd/mm/yyyy", required: true
       .row
         .col-sm-3
           .form-group
