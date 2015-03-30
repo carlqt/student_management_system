@@ -1,0 +1,30 @@
+
+= form_for @mentor do |f|
+  .row
+    .col-md-3
+      .text-center
+        %img.avatar.img-circle{:alt => "avatar", :src => "//placehold.it/100"}
+          %h6 Upload a different photo...
+          %input.form-control{:type => "file"}
+    .col-md-9
+      %h3 Personal Info
+      .row
+        .col-md-9
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: 'form-control', required: true
+        .col-md-3
+          .form-group
+            = f.label :date_of_birth
+            = f.text_field :date_of_birth, "data-provide" => "datepicker", class: 'form-control datepicker date', "data-date-format" => "dd/mm/yyyy", required: true
+      .row
+        .col-sm-3
+          .form-group
+            = f.label :sex
+            = f.select :sex, %W(M F), {}, class: 'form-control'
+        .col-sm-9
+      .form-group
+        = f.label :bio
+        = f.text_area :bio, class: 'form-control', required: true
+
+      = f.submit "Save", class: "btn btn-success"

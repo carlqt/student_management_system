@@ -1,2 +1,20 @@
-%h1 Mentors#index
-%p Find me in app/views/mentors/index.html.haml
+.row
+  .col-md-12
+    %h4
+      Mentors List
+      %span
+        = link_to new_mentor_path do
+          %i.glyphicon.glyphicon-plus
+    .table-responsive
+      %table#mytable.table.table-bordred.table-striped
+        %thead
+          %th
+            %input#checkall{:type => "checkbox"}/
+          %th Name
+          %th Sex
+          %th Age
+          %th Bio
+          %th Edit
+          %th Delete
+        %tbody
+          = render @mentors

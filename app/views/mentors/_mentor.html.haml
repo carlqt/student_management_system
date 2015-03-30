@@ -1,0 +1,15 @@
+%tr
+  %td
+    %input.checkthis{:type => "checkbox"}/
+  %td= mentor.name
+  %td= mentor.sex
+  %td= mentor.age
+  %td= mentor.bio
+  %td
+    %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+      = link_to edit_mentor_path(mentor.id) do
+        %span.glyphicon.glyphicon-pencil
+  %td
+    %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete"}
+      = link_to mentor_path(mentor.id), "data-confirm" => "Are you sure?", method: :delete do
+        %span.glyphicon.glyphicon-trash

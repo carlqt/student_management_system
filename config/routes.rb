@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
-  get 'mentors/index'
-
-  get 'mentors/new'
-
-  get 'mentors/update'
-
-  get 'mentors/destroy'
-
-  get 'mentors/create'
-
-  get 'mentors/edit'
+  resources :mentors, except: :show
 
   resources :students
 
