@@ -28,6 +28,8 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    Student.destroy params[:id]
+    redirect_to :back
   end
 
   private
