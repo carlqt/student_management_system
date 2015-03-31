@@ -1,6 +1,11 @@
 class CollegesController < ApplicationController
   def index
     @colleges = College.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @colleges }
+    end
   end
 
   def new
@@ -34,6 +39,10 @@ class CollegesController < ApplicationController
   def destroy
     College.destroy params[:id]
     redirect_to :back
+  end
+
+  def search
+
   end
 
   private

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :colleges, except: :show
+  resources :colleges, except: :show do
+    get 'search', on: :collection
+  end
 
   resources :mentors, except: :show
 
