@@ -5,11 +5,11 @@
       %span
         = link_to new_college_path do
           %i.glyphicon.glyphicon-plus
-    .table-responsive
-      %table#mytable.table.table-bordred.table-striped
+    .table-responsive{"ng-controller" => "CollegesController"}
+      %table#mytable.table.table-bordred
         %thead
           %th
-            %input#checkall{:type => "checkbox"}/
+            %input#checkall{:type => "checkbox"}
           %th Name
           %th Country
           %th SAT min score
@@ -17,5 +17,25 @@
           %th Tuition
           %th Edit
           %th Delete
-        %tbody
-          = render @colleges
+        %tbody{ 'ng-repeat' => 'college in colleges'}
+          %tr
+            %td
+              %input.checkthis{:type => "checkbox"}
+              %td
+                {{ college.name }}
+              %td
+                {{ college.country }}
+              %td
+                {{ college.sat_min_score }}
+              %td
+                {{ college.sat_max_score }}
+              %td
+                {{ college.tuition }}
+              %td
+                %a{ "href" => "{{ '/colleges/' + college.id + '/edit'}}"}
+                  %span.glyphicon.glyphicon-pencil
+              %td
+
+-# %div{"ng-controller" => "CollegesController"}
+-#   %ul{"ng-repeat" => "college in colleges"}
+-#     %li {{college.country}}
