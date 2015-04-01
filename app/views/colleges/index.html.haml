@@ -1,11 +1,16 @@
-.row
+.row{"ng-controller" => "CollegesController"}
   .col-md-12
     %h4
       College List
       %span
         = link_to new_college_path do
           %i.glyphicon.glyphicon-plus
-    .table-responsive{"ng-controller" => "CollegesController"}
+    .row
+      .col-sm-6
+        .input-group
+          %input.form-control{:placeholder => "Search and filter", :type => "text", "ng-model" => "college_attributes"}
+            %span.input-group-btn
+    .table-responsive
       %table#mytable.table.table-bordred
         %thead
           %th
@@ -17,7 +22,7 @@
           %th Tuition
           %th Edit
           %th Delete
-        %tbody{ 'ng-repeat' => 'college in colleges'}
+        %tbody{ 'ng-repeat' => 'college in colleges | filter:college_attributes'}
           %tr
             %td
               %input.checkthis{:type => "checkbox"}
@@ -30,11 +35,15 @@
               %td
                 {{ college.sat_max_score }}
               %td
-                {{ college.tuition }}
+                {{ college.tuition | currency }}
               %td
-                %a{ "href" => "{{ '/colleges/' + college.id + '/edit'}}"}
-                  %span.glyphicon.glyphicon-pencil
+                %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                  %a{ "href" => "{{ '/colleges/' + college.id + '/edit'}}"}
+                    %span.glyphicon.glyphicon-pencil
               %td
+                %p{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit"}
+                  %a{ "href" => "{{ '/colleges/' + college.id }}", data: { confirm: "Are you sure?", method: "delete"}}
+                    %span.glyphicon.glyphicon-trash
 
 -# %div{"ng-controller" => "CollegesController"}
 -#   %ul{"ng-repeat" => "college in colleges"}
