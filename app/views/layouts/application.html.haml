@@ -21,6 +21,16 @@
             %li= link_to "Students", students_path
             %li= link_to "Mentors", mentors_path
             %li= link_to "Colleges", colleges_path
+
+    - if !flash.blank?
+      %div{ class: "alert alert-#{flash.keys.first} flash-messages", role: 'alert' }
+        - flash_messages(flash).each do |message|
+          %ul
+            %li
+              = message
+
     .container
       = yield
+    = console
+
     = javascript_include_tag 'application', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js'

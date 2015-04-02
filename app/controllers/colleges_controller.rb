@@ -18,6 +18,7 @@ class CollegesController < ApplicationController
     if @college.save
       redirect_to :back
     else
+      flash.now[:danger] = @college.errors.full_messages
       render :new
     end
   end
@@ -28,6 +29,7 @@ class CollegesController < ApplicationController
     if @college.update_attributes(college_params)
       redirect_to colleges_path
     else
+      flash.now[:danger] = @college.errors.full_messages
       render :edit
     end
   end

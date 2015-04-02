@@ -17,9 +17,12 @@
 
 class Student < ActiveRecord::Base
   mount_uploader :image, ImageUploader
-  
+
   belongs_to :college
   belongs_to :mentor
+
+  validates :name, presence: true
+  validates :school, presence: true
 
   before_create :calculate_age
 
