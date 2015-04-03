@@ -17,8 +17,10 @@ class StudentsController < ApplicationController
     @student = Student.new student_params
 
     if @student.save
+      flash[:success] = 'Student created'
       redirect_to :back
     else
+      flash[:danger] = @student.errors.full_messages
       render new
     end
 
@@ -27,8 +29,10 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find params[:id]
     if @student.update_attributes(student_params)
+      flash[:success] = 'Student updated successfully'
       redirect_to students_path
     else
+      flash[:alert] = @student.erros.full_messages
       render :edit
     end
   end

@@ -8,11 +8,14 @@ class MentorsController < ApplicationController
   end
 
   def update
+    # @students = Student.all
     @mentor = Mentor.find params[:id]
 
     if @mentor.update_attributes(mentor_params)
+      flash[:success] = "Mentor updated successfully"
       redirect_to :back
     else
+      flash[:danger] = @mentor.errors.full_messages
       render :edit
     end
   end
@@ -27,8 +30,10 @@ class MentorsController < ApplicationController
 
 
     if @mentor.save
+      flash[:success] = "Mentor created"
       redirect_to :back
     else
+      flash[:danger] = @mentor.errors.full_messages
       render :new
     end
   end
