@@ -16,6 +16,7 @@ class CollegesController < ApplicationController
     @college = College.new college_params
 
     if @college.save
+      flash[:success] = "College Added"
       redirect_to :back
     else
       flash.now[:danger] = @college.errors.full_messages
@@ -27,6 +28,7 @@ class CollegesController < ApplicationController
     @college = College.find params[:id]
 
     if @college.update_attributes(college_params)
+      flash[:success] = "Updated successfully"
       redirect_to colleges_path
     else
       flash.now[:danger] = @college.errors.full_messages
