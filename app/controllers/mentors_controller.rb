@@ -1,4 +1,6 @@
 class MentorsController < ApplicationController
+  before_filter :instantiate_variables, only: [:new, :edit]
+
   def index
     @mentors = Mentor.all
   end
@@ -8,14 +10,12 @@ class MentorsController < ApplicationController
   end
 
   def update
-    @students = Student.all
     @mentor = Mentor.find params[:id]
 
-    binding.pry
 
     if @mentor.update_attributes(mentor_params)
       flash[:success] = "Mentor updated successfully"
-      redirect_to :back
+      redirect_to edit_mentor_path(@mentor)
     else
       flash[:danger] = @mentor.errors.full_messages
       render :edit
@@ -41,12 +41,16 @@ class MentorsController < ApplicationController
   end
 
   def edit
-    @students = Student.all
     @mentor = Mentor.find params[:id]
+    @students = Student.where(college_id: @mentor.college_id)
   end
 
   private
+  def instantiate_variables
+    @colleges = College.all
+  end
+
   def mentor_params
-    params.require(:mentor).permit(:name, :date_of_birth, :sex, :bio, :image)
+    params.require(:mentor).permit(:name, :date_of_birth, :sex, :bio, :image, :college_id)
   end
 end

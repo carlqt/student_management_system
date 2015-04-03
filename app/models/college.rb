@@ -16,6 +16,7 @@
 class College < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   has_many :students
+  has_many :mentors
 
   validates :name, presence: true
   validates_numericality_of :tuition, greater_than: 0

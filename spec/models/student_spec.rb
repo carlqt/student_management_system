@@ -15,6 +15,7 @@
 #  updated_at    :datetime         not null
 #  college_id    :integer
 #  image         :string
+#  mentor_id     :integer
 #
 
 require 'rails_helper'

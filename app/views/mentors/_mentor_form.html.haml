@@ -25,10 +25,15 @@
           .form-group
             = f.label :sex
             = f.select :sex, %W(M F), {}, class: 'form-control'
-        .col-sm-9
-      .form-group
-        = f.label :students
-        = f.select :students, options_from_collection_for_select(@students, 'id', 'name'), { include_blank: true }, class: 'form-control', multiple: true
+        .col-sm-3
+          .form-group
+            = f.label :college_id
+            = f.select :college_id, options_from_collection_for_select(@colleges, :id, :name, @mentor.college_id), {}, include_blank: true, class: 'form-control'
+        .col-sm-6
+      - if params[:action] == 'edit' && params[:controller] == 'mentors'
+        .form-group
+          = f.label :students, 'Assign students'
+          = f.select :students, options_from_collection_for_select(@students, 'id', 'name'), { include_blank: true }, class: 'form-control', multiple: true
       .form-group
         = f.label :bio
         = f.text_area :bio, class: 'form-control', required: true
