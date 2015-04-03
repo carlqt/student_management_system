@@ -10,6 +10,7 @@
 #  tuition       :decimal(, )
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  image         :string
 #
 
 class College < ActiveRecord::Base

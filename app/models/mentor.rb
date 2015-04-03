@@ -10,11 +10,13 @@
 #  bio           :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  image         :string
 #
 
 class Mentor < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   has_many :students
+  accepts_nested_attributes_for :students
 
   validates :name, presence: true
 

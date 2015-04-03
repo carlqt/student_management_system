@@ -13,6 +13,8 @@
 #  date_of_birth :date
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  college_id    :integer
+#  image         :string
 #
 
 require 'rails_helper'

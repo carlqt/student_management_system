@@ -8,8 +8,10 @@ class MentorsController < ApplicationController
   end
 
   def update
-    # @students = Student.all
+    @students = Student.all
     @mentor = Mentor.find params[:id]
+
+    binding.pry
 
     if @mentor.update_attributes(mentor_params)
       flash[:success] = "Mentor updated successfully"
@@ -39,6 +41,7 @@ class MentorsController < ApplicationController
   end
 
   def edit
+    @students = Student.all
     @mentor = Mentor.find params[:id]
   end
 
