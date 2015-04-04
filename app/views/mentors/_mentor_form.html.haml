@@ -32,8 +32,8 @@
         .col-sm-6
       - if params[:action] == 'edit' && params[:controller] == 'mentors'
         .form-group
-          = f.label :students, 'Assign students'
-          = f.select :students, options_from_collection_for_select(@students, 'id', 'name'), { include_blank: true }, class: 'form-control', multiple: true
+          = label_tag 'Assign students'
+          = select_tag :students, options_from_collection_for_select(@students, 'id', 'name', @mentor.students.pluck(:id)), include_blank: true , class: 'form-control', multiple: true
       .form-group
         = f.label :bio
         = f.text_area :bio, class: 'form-control', required: true

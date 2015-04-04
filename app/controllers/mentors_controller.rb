@@ -1,5 +1,5 @@
 class MentorsController < ApplicationController
-  before_filter :instantiate_variables, only: [:new, :edit]
+  before_filter :instantiate_variables, only: [:new, :edit, :update]
 
   def index
     @mentors = Mentor.all
@@ -12,8 +12,8 @@ class MentorsController < ApplicationController
   def update
     @mentor = Mentor.find params[:id]
 
-
     if @mentor.update_attributes(mentor_params)
+      Student.where(id: params[:students]).update_all(mentor_id: @mentor.id)
       flash[:success] = "Mentor updated successfully"
       redirect_to edit_mentor_path(@mentor)
     else
@@ -42,7 +42,7 @@ class MentorsController < ApplicationController
 
   def edit
     @mentor = Mentor.find params[:id]
-    @students = Student.where(college_id: @mentor.college_id)
+    @students = Student.all
   end
 
   private
